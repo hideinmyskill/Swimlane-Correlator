@@ -27,12 +27,12 @@
 
 ### **Step 2: Set Up Parent and Child Cases**
 1. **Open a New Window**:
-   - In one browser window, open the **parent case** that you want to correlate other cases to.
+   - In second one browser window, open the **parent case** that you want to correlate other cases to.
    - Keep the Swimlane Correlator extension open in this window.  
      ![Parent Case Example](https://github.com/user-attachments/assets/dbaa2b0f-f9e7-4ccf-97ad-5a3cbe5fe3e5)
 
 2. **Select Child Cases**:
-   - In a second browser window, navigate to the **child cases** you want to correlate to the parent case.
+   - In a first browser window, navigate to the **child cases** you want to correlate to the parent case.
    - For each child case, click the button next to its tracking ID. The extension in the parent case window will capture these tracking IDs automatically.
 
 ---
