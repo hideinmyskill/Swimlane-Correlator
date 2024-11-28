@@ -41,7 +41,7 @@
 1. After selecting all the child cases:
    - Go to the Swimlane Correlator extension in the parent case window.
    - Click the **Paste** button.  
-     ![Paste Button Example](https://github.com/user-attachments/assets/51c5e223-673e-445c-ada4-00281bb32830)
+     ![Paste Button Example](https://github.com/user-attachments/assets/5667d06f-885a-4895-a51c-99699a731ce5)
 
 2. The extension will automatically populate all the selected tracking IDs into the Swimlane manual correlation text box.
 
