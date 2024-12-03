@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Swimlane",
+  "name": "Swimlane Correlator",
   "version": "2.0.0",
   "description": "Adds copy button for all cases",
   "permissions": ["scripting", "clipboardWrite"],
@@ -10,16 +10,16 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Copy button",
-    "default_icon": "sw.png"
+    "default_title": "Swimlane Correlator",
+    "default_icon": "sw_crop.png"
   },
   "content_scripts": [{
     "matches": ["https://bluenode.int.ctrlgroup.local/*"],
     "js": ["content.js"]
   }],
   "icons": {
-    "16": "sw.png",
-    "48": "sw.png",
-    "128": "sw.png"
+    "16": "sw_crop.png",
+    "48": "sw_crop.png",
+    "128": "sw_crop.png"
   }
 }
