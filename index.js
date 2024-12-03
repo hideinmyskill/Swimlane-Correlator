@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedContent = localStorage.getItem('multiEntryContent');
     if (savedContent) {
         multiEntryBox.value = savedContent;
-    }
+    } 
 
     // Save the multi-entry box content to localStorage on input change
     multiEntryBox.addEventListener('input', () => {
