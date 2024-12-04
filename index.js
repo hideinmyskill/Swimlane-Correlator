@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const multiEntryBox = document.getElementById('multiEntryBox');
 
+    // Fetch Saved data from the background script when the pop up opens
+    chrome.runtime.sendMessage({ action: "getData" }, (response) => {
+        if (response.data) {
+            multiEntryBox.value = response.data.join('\n'); // Populate the text box with the collected data 
+            localStorage.setItem('multiEntryContent', multiEntryBox.value) // Save to localStorage
+        }
+    })
+    
     // Load saved content from localStorage when the popup is opened
     const savedContent = localStorage.getItem('multiEntryContent');
     if (savedContent) {
@@ -9,18 +17,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Save the multi-entry box content to localStorage on input change
     multiEntryBox.addEventListener('input', () => {
-        localStorage.setItem('multiEntryContent', multiEntryBox.value);
+        if (multiEntryBox.value.trim() === '' ) {
+            multiEntryBox.value = ''
+            localStorage.removeItem('multiEntryContent'); // Clear the saved content
+            chrome.runtime.sendMessage({ action: "clearData"}); // Clear chrome local storage when user clear the textbox
+        } else {
+            const currentLines = multiEntryBox.value.trim().split('\n'); // Get all current lines
+            chrome.runtime.sendMessage({ action: "syncData", data: currentLines }, (response) => {
+                if (response.success) {
+                    console.log("Data synchronized successfully");
+                } else {
+                    console.error("failed to synchronized data.")
+                }
+            });
+
+            // save to local storage aswell
+            localStorage.setItem('multiEntryContent', multiEntryBox.value);
+        }
     });
 
     // Listen for messages from the background script
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message.action === 'updateMultiEntryBox') {
-            // Append the received text to the multi-entry box
-            multiEntryBox.value += message.text + '\n';
+            if (multiEntryBox.value) {
+                // Append the received text to the multi-entry box
+                multiEntryBox.value += '\n' + message.text;
 	    
-
-            // Save the updated content to localStorage
-            localStorage.setItem('multiEntryContent', multiEntryBox.value);
+                // Save the updated content to localStorage
+                localStorage.setItem('multiEntryContent', multiEntryBox.value);
+            } else {
+                // Append the received text to the multi-entry box
+                multiEntryBox.value += message.text;
+	    
+                // Save the updated content to localStorage
+                localStorage.setItem('multiEntryContent', multiEntryBox.value);
+            }
+            
         }
     });
 

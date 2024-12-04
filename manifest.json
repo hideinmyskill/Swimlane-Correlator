@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Swimlane Correlator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Adds copy button for all cases",
-  "permissions": ["scripting", "clipboardWrite"],
+  "permissions": ["scripting", "clipboardWrite", "storage"],
   "host_permissions": ["https://bluenode.int.ctrlgroup.local/*"],
   "background": {
     "service_worker": "background.js"
