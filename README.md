@@ -29,7 +29,7 @@
 1. **Open a New Window**:
    - In second one browser window, open the **parent case** that you want to correlate other cases to.
    - Keep the Swimlane Correlator extension open in this window.  
-     ![Parent Case Example](https://github.com/user-attachments/assets/dbaa2b0f-f9e7-4ccf-97ad-5a3cbe5fe3e5)
+    
 
 2. **Select Child Cases**:
    - In a first browser window, navigate to the **child cases** you want to correlate to the parent case.
