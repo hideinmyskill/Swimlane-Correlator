@@ -15,7 +15,7 @@ function syncCollectedData(data) {
     });
 }
 
-// listen for messages
+// listen for messages in Swimlane Correlator
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "copyText") {
         // store data
@@ -38,4 +38,31 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         });
         return true; 
     }
+});
+
+// Listen for messages in Dictionary creator
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => { 
+    if(message.action === "sendtogpt") {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "sendtogpt", text: message.text });
+    } 
+    
+    if (message.text === "apikey") {
+        chrome.storage.local.set({ apikey: message.text }, function() {
+            if (chrome.runtime.lastError) {
+              console.error("Error saving data:", chrome.runtime.lastError);
+            } else {
+              console.log("API key saved successfully!");
+            }
+          });
+    }
+});
+
+
+// Listen for messages in Advisory Creator
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => { 
+    if(message.action === "URL") {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "URL", text: message.text });
+    }
+
 });

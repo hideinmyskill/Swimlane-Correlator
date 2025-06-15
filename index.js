@@ -1,3 +1,32 @@
+//Menu bar design
+const hamMenu = document.querySelector('.ham-menu');
+const offScreenMenu = document.querySelector('.off-screen-menu');
+const createDictionary = document.getElementById('dictionary');
+const createadvisory = document.getElementById('advisory');
+const license = document.getElementById('license');
+
+
+hamMenu.addEventListener('click', () => {
+    hamMenu.classList.toggle('active');
+    offScreenMenu.classList.toggle('active');
+})
+
+createDictionary.addEventListener('click', () => {
+    chrome.action.setPopup({popup: "dictionary.html"});
+    window.close();
+})
+
+createadvisory.addEventListener('click', () => {
+    chrome.action.setPopup({popup: "advisory.html"});
+    window.close();
+})
+
+license.addEventListener('click', () => {
+    chrome.action.setPopup({popup: "license.html"});
+    window.close();
+})
+
+//***************Menu Bar Design******** */
 document.addEventListener('DOMContentLoaded', () => {
     const multiEntryBox = document.getElementById('multiEntryBox');
 

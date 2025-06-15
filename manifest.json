@@ -14,7 +14,7 @@
     "default_icon": "sw_crop.png"
   },
   "content_scripts": [{
-    "matches": ["https://bluenode.int.ctrlgroup.local/*"],
+    "matches": ["https://bluenode.int.ctrlgroup.local/*", "https://www.bleepingcomputer.com/*"],
     "js": ["content.js"]
   }],
   "icons": {

@@ -6,6 +6,96 @@
     <title>Swimlane Correlator</title>
     <style>
         /* Dark theme styling */
+        .off-screen-menu {
+            background-color: rgb(34, 37, 49);
+            height: 100vh;
+            width: 100%;
+            max-width: 200px;
+            position: fixed;
+            top: 0;
+            right: -200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1rem;
+            transition: .3s ease;
+            opacity: 90%;
+        }
+
+        .off-screen-menu.active {
+            right: 0;
+        }
+
+        .menu-button {
+            background-color: transparent;
+            margin: 5px 0;
+            border: none;
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            color: #e0e0e0;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .menu-button:hover {
+            background-color: #6F86FF;
+        }
+
+        /* nav {
+            left: 75%;
+            padding: 1rem;
+            display: flex;
+            background-color: rgb(34, 37, 49);
+        } */
+
+        .ham-menu {
+            height: 30px;
+            width: 30px;
+            margin-left: auto;
+            position: relative;
+            cursor: pointer;
+            left: 115px;
+        }
+
+        .ham-menu span {
+            height: 5px;
+            width: 100%;
+            background-color: #6F86FF;
+            border-radius: 25px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: .3s ease;
+        }
+
+        .ham-menu span:nth-child(1) {
+            top: 25%;
+        }
+
+        .ham-menu span:nth-child(3) {
+            top: 75%;
+        }
+
+        .ham-menu.active span:nth-child(1) {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .ham-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .ham-menu.active span:nth-child(3) {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
         body {
             margin: 0;
             padding: 20px;
@@ -74,6 +164,18 @@
     </style>
 </head>
 <body>
+    <div class="off-screen-menu">
+        <button class="menu-button" id="dictionary">Create dictionary</button>
+        <button class="menu-button" id="advisory">Create advisory </button>
+        <button class="menu-button" id="license">License Key</button>
+    </div>
+    <nav>
+        <div class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <h1>Swimlane Correlator</h1>
     <textarea id="multiEntryBox" class="multi-entry-box" placeholder="Enter multiple entries here..."></textarea>
     <button id="activateButton" class="button activate-button">Activate</button>
